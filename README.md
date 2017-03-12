@@ -2,9 +2,11 @@
 
 ## Quick Start
 
-You can use this image just like the hexo-cli, for example:
+You can use this image just like the `hexo-cli`, for example:
 
-  docker run --rm davyyy/hexo help
+```
+docker run --rm davyyy/hexo help
+```
 
 The commands `hexo init` and `npm install` already ran when built the docker image,
 so you don't have to download anything to start.
@@ -13,7 +15,9 @@ so you don't have to download anything to start.
 
 1. Start the server
 
-  docker run --name hexo-server -d -p YOURPORT:4000 -v /YOUR/BLOG/PATH/:/blog  davyyy/hexo server
+```
+docker run --name hexo-server -d -p YOURPORT:4000 -v /YOUR/BLOG/PATH/:/blog  davyyy/hexo server
+```
 
 Some explaination:
 
@@ -37,8 +41,11 @@ INFO  Created: /blog/source/_posts/foo.md
 
 4. Generate static files:
 
-  docker run --rm --volumes-from hexo-server davyyy/hexo gen
+```
+docker run --rm --volumes-from hexo-server davyyy/hexo gen
+```
 
 5. Deploy
-
-  docker run --rm --volumes-from hexo-server davyyy/hexo deploy
+```
+docker run --rm --volumes-from hexo-server davyyy/hexo deploy
+```
