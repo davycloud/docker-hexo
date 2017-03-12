@@ -13,7 +13,7 @@ so you don't have to download anything to start.
 
 ### Common Usage
 
-1. Start the server
+- Start the server
 
 ```
 docker run --name hexo-server -d -p YOURPORT:4000 -v /YOUR/BLOG/PATH/:/blog  davyyy/hexo server
@@ -26,26 +26,26 @@ Some explaination:
 - choose a port you want to expose
 - choose a local directory for your blogs
 
-2. New post
+- New post
 
 ```
 docker run --rm --volumes-from hexo-server davyyy/hexo new foo
 INFO  Created: /blog/source/_posts/foo.md
 ```
 
-3. Do your writing
+- Do your writing
 
 ```
   vim /YOUR/BLOG/PATH/source/_posts/foo.md
 ```
 
-4. Generate static files:
+- Generate static files:
 
 ```
 docker run --rm --volumes-from hexo-server davyyy/hexo gen
 ```
 
-5. Deploy
+- Deploy
 ```
 docker run --rm --volumes-from hexo-server davyyy/hexo deploy
 ```
