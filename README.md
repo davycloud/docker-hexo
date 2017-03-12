@@ -11,41 +11,48 @@ docker run --rm davyyy/hexo help
 The commands `hexo init` and `npm install` already ran when built the docker image,
 so you don't have to download anything to start.
 
-### Common Usage
 
-- Start the server
+### Start the server
 
 ```
 docker run --name hexo-server -d -p YOURPORT:4000 -v /YOUR/BLOG/PATH/:/blog  davyyy/hexo server
 ```
 
-Some explaination:
+Notes:
 
 - name the container, because we will use it later in `volumes-from`.
 - we start the server here, so run in background with `-d` option.
 - choose a port you want to expose
 - choose a local directory for your blogs
 
-- New post
+The `/YOUR/BLOG/PATH/` shoud be empty(or not exists) when first run container from this image.
+If the directory is empty, We will copy all init files from the image to the volume, otherwise we do **nothing**.
+And you can run `hexo init` command by yourself if you like, of cource.
+
+### New post
 
 ```
 docker run --rm --volumes-from hexo-server davyyy/hexo new foo
 INFO  Created: /blog/source/_posts/foo.md
 ```
 
-- Do your writing
+Then you can write your post with your favorite editer, for example:
 
 ```
   vim /YOUR/BLOG/PATH/source/_posts/foo.md
 ```
 
-- Generate static files:
+Just remember:
+- we don't need this container run, so don't forget to use the `--rm` option to remove it automatically.
+- use `--volumes-from` to mount from our earlier created blog volume, otherwise we will create a new volume with initial hexo.
+
+### Generate static files:
 
 ```
 docker run --rm --volumes-from hexo-server davyyy/hexo gen
 ```
 
-- Deploy
+### Deploy
 ```
 docker run --rm --volumes-from hexo-server davyyy/hexo deploy
 ```
