@@ -26,8 +26,8 @@ Notes:
 - choose a local directory for your blogs
 
 The `/YOUR/BLOG/PATH/` shoud be empty(or not exists) when first run container from this image.
-If the directory is empty, We will copy all init files from the image to the volume, otherwise we do **nothing**.
-And you can run `hexo init` command by yourself if you like, of cource.
+If the directory is empty, it will copy all init files from the image to the volume, otherwise do **nothing**.
+And you can run `hexo init` command by yourself if you like, of course.
 
 ### New post
 
@@ -43,8 +43,9 @@ Then you can write your post with your favorite editer, for example:
 ```
 
 Just remember:
-- we don't need this container run, so don't forget to use the `--rm` option to remove it automatically.
-- use `--volumes-from` to mount from our earlier created blog volume, otherwise we will create a new volume with initial hexo.
+
+- we don't need keep this container, so don't forget to use the `--rm` option to remove it automatically.
+- use `--volumes-from` to mount from our earlier created blog volume, otherwise it will create a new volume with initial hexo.
 
 ### Generate static files:
 
